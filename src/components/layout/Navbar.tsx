@@ -43,9 +43,9 @@ export function Navbar({ onRegister }: { onRegister: () => void }) {
   }, [isOpen])
 
   return (
-    <nav aria-label="Main navigation" className={`fixed inset-x-0 top-0 z-50 transition duration-300 ${solid ? 'bg-navy shadow-lg' : 'bg-transparent'}`}>
+    <nav aria-label="Main navigation" className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 transition duration-300 ${solid ? 'bg-navy/95 shadow-lg backdrop-blur-md' : 'bg-navy/80 backdrop-blur-sm'}`}> 
       <div className="container-page flex h-20 items-center justify-between text-white">
-        <a href="#hero" className="flex items-baseline gap-2"><span className="font-display text-3xl font-bold">Immersia</span><span className="font-semibold text-gold">Impact Lab</span></a>
+        <a href="#hero" className="inline-flex items-center" aria-label="Immersia - kembali ke beranda"><img src="/brand/immersia-logo-light.png" alt="Immersia" className="h-8 w-auto object-contain md:h-10" /></a>
         <div className="hidden items-center gap-7 md:flex">
           {links.map(([href, label]) => <a key={href} href={href} className="text-sm font-semibold text-stone hover:text-white">{label}</a>)}
           <button onClick={register} className="min-h-11 rounded-full border border-gold px-5 font-semibold hover:bg-gold hover:text-navy">Daftar Sekarang</button>
