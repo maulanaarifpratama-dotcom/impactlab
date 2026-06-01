@@ -14,7 +14,7 @@ export function Footer({ onOpenPrivacy, onOpenTerms }: { onOpenPrivacy: () => vo
       <div className="container-page relative">
         <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr_0.8fr_1fr]">
           <div>
-            <a href="#hero" className="inline-flex items-center" aria-label="Immersia - kembali ke beranda"><img src="/brand/immersia-logo-light.png" alt="Immersia" className="h-10 w-auto object-contain" /></a>
+            <a href="#hero" className="inline-flex items-center" aria-label="Immersia - kembali ke beranda"><img src="/brand/imersia-wordmark.png" alt="Immersia" className="h-10 w-auto object-contain" /></a>
             <p className="mt-6 max-w-sm font-display text-3xl leading-tight text-white">Designing Impact. Strengthening Decisions.</p>
             <p className="mt-4 max-w-sm text-sm leading-7 text-stone">Public training praktis untuk memperkuat sistem MEAL, project management, dan pemanfaatan AI di sektor social development.</p>
           </div>
