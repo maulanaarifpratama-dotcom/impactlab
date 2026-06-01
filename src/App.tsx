@@ -1,121 +1,65 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { CookieConsent } from './components/layout/CookieConsent'
+import { Footer } from './components/layout/Footer'
+import { Navbar } from './components/layout/Navbar'
+import { PrivacyPolicy } from './components/legal/PrivacyPolicy'
+import { TermsModal } from './components/legal/TermsModal'
+import { RegistrationModal } from './components/forms/RegistrationModal'
+import { AboutImpactLab } from './components/sections/AboutImpactLab'
+import { Approach } from './components/sections/Approach'
+import { Benefits } from './components/sections/Benefits'
+import { FAQ } from './components/sections/FAQ'
+import { Facilitators } from './components/sections/Facilitators'
+import { FinalCTA } from './components/sections/FinalCTA'
+import { Hero } from './components/sections/Hero'
+import { PainPoints } from './components/sections/PainPoints'
+import { Portfolio } from './components/sections/Portfolio'
+import { Pricing } from './components/sections/Pricing'
+import { Programs } from './components/sections/Programs'
+import { Testimonials } from './components/sections/Testimonials'
+import { TrustSignals } from './components/sections/TrustSignals'
+import { ToastProvider } from './components/ui/Toast'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [registrationOpen, setRegistrationOpen] = useState(false)
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [termsOpen, setTermsOpen] = useState(false)
+  const [preselectedProgram, setPreselectedProgram] = useState<string | undefined>()
+  const [preselectedTier, setPreselectedTier] = useState<string | undefined>()
+  const [registrationKey, setRegistrationKey] = useState(0)
+
+  const openRegistration = (program?: string, tier?: string) => {
+    setPreselectedProgram(program)
+    setPreselectedTier(tier)
+    setRegistrationKey((current) => current + 1)
+    setRegistrationOpen(true)
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <ToastProvider>
+      <Navbar onRegister={() => openRegistration()} />
+      <main>
+        <Hero onRegister={() => openRegistration()} />
+        <PainPoints />
+        <AboutImpactLab />
+        <TrustSignals />
+        <Programs onRegister={(programId) => openRegistration(programId)} />
+        <Approach />
+        <Benefits />
+        <Testimonials />
+        <Portfolio />
+        <Pricing onSelectTier={(tier) => openRegistration(undefined, tier)} onOpenTerms={() => setTermsOpen(true)} />
+        <Facilitators />
+        <FAQ />
+        <FinalCTA onRegister={() => openRegistration()} onOpenPrivacy={() => setPrivacyOpen(true)} />
+      </main>
+      <Footer onOpenPrivacy={() => setPrivacyOpen(true)} onOpenTerms={() => setTermsOpen(true)} />
+      <button onClick={() => openRegistration()} className="fixed bottom-4 left-4 right-4 z-30 min-h-12 rounded-full bg-gold font-bold text-navy shadow-soft md:hidden">Daftar Sekarang</button>
+      <RegistrationModal key={registrationKey} isOpen={registrationOpen} onClose={() => setRegistrationOpen(false)} preselectedProgram={preselectedProgram} preselectedTier={preselectedTier} onOpenPrivacy={() => setPrivacyOpen(true)} onOpenTerms={() => setTermsOpen(true)} />
+      <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <TermsModal isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
+      <CookieConsent onOpenPrivacy={() => setPrivacyOpen(true)} />
+    </ToastProvider>
   )
 }
 

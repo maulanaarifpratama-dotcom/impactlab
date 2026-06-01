@@ -1,0 +1,9 @@
+{
+  "name": "Immersia Impact Lab",
+  "short_name": "Impact Lab",
+  "start_url": "/impact-lab",
+  "display": "standalone",
+  "background_color": "#31444D",
+  "theme_color": "#31444D",
+  "icons": []
+}
