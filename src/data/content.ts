@@ -13,6 +13,15 @@ export const heroStats = [
   { value: '2 Hari', label: 'Offline, Langsung Applicable' },
 ]
 
+export const partnerLogos = Array.from({ length: 29 }, (_, index) => {
+  const number = index + 1
+  const padded = String(number).padStart(2, '0')
+  return {
+    name: `Mitra Immersia ${padded}`,
+    src: `/partners/immersia-partner-${padded}.png`,
+  }
+})
+
 export const painPoints = [
   { icon: '🔄', text: 'Sudah ikut training, tapi sistemnya tidak jalan setelah program selesai?' },
   { icon: '📋', text: 'Dapat template MEAL atau PM, tapi tidak relevan dengan kondisi unik lembagamu?' },
