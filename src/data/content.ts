@@ -57,9 +57,9 @@ export const programs = [
 ]
 
 export const schedule = [
-  { program: 'MEAL for Impact', id: 'meal', batches: ['13–14 Juni', '20–21 Juni', '24–25 Juni', '27–28 Juni'] },
-  { program: 'Project Management for Impact', id: 'pm', batches: ['4–5 Juli', '7–8 Juli', '11–12 Juli', '14–15 Juli'] },
-  { program: 'AI for Impact', id: 'ai', batches: ['18–19 Juli', '21–22 Juli', '25–26 Juli', '28–29 Juli'] },
+  { program: 'MEAL for Impact', id: 'meal', batches: ['20-21 Juni', '24-25 Juni', '27-28 Juni'] },
+  { program: 'Project Management for Impact', id: 'pm', batches: ['4-5 Juli', '7-8 Juli', '11-12 Juli'] },
+  { program: 'AI for Impact', id: 'ai', batches: ['18-19 Juli', '21-22 Juli', '25-26 Juli'] },
 ]
 
 export const pricing = [

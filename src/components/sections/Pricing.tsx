@@ -8,7 +8,7 @@ export function Pricing({ onSelectTier, onOpenTerms }: { onSelectTier: (tier: st
         <h2 id="pricing-title" className="text-center font-display text-4xl text-navy">Jadwal dan Investasi</h2>
         <div className="mt-10 overflow-x-auto rounded-3xl border border-stone bg-white">
           <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="bg-navy text-white"><tr><th className="p-4">Program</th><th>Batch 1</th><th>Batch 2</th><th>Batch 3</th><th>Batch 4</th></tr></thead>
+            <thead className="bg-navy text-white"><tr><th className="p-4">Program</th><th>Batch 1</th><th>Batch 2</th><th>Batch 3</th></tr></thead>
             <tbody>{schedule.map((row) => <tr key={row.program} className="border-t border-stone"><th className="p-4 text-navy">{row.program}</th>{row.batches.map((batch) => <td key={batch} className="font-mono text-muted">{batch}</td>)}</tr>)}</tbody>
           </table>
         </div>
